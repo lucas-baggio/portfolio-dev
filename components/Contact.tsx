@@ -3,8 +3,10 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaGithub, FaLinkedin, FaEnvelope, FaPaperPlane } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Contact() {
+  const { t } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,7 +17,7 @@ export default function Contact() {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    const whatsappMessage = `Olá! Meu nome é ${formData.name}.\n\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`;
+    const whatsappMessage = `${t("contact.whatsapp.message")} ${formData.name}.\n\nEmail: ${formData.email}\n\nMensagem:\n${formData.message}`;
     const encodedMessage = encodeURIComponent(whatsappMessage);
     const whatsappUrl = `https://wa.me/5517981379835?text=${encodedMessage}`;
     window.open(whatsappUrl, '_blank');
@@ -50,11 +52,10 @@ export default function Contact() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-accent-info to-accent-success bg-clip-text text-transparent">
-            Vamos Conversar
+            {t("contact.title")}
           </h2>
           <p className="text-dark-muted text-lg max-w-2xl mx-auto">
-            Interessado em trabalhar juntos? Entre em contato através do
-            formulário ou redes sociais
+            {t("contact.subtitle")}
           </p>
         </motion.div>
 
@@ -67,7 +68,7 @@ export default function Contact() {
             className="metric-card rounded-xl p-6 md:p-8 w-full"
           >
             <h3 className="text-2xl font-bold mb-6 text-dark-text">
-              Envie uma Mensagem
+              {t("contact.form.title")}
             </h3>
             <form onSubmit={handleSubmit} className="space-y-6 w-full">
               <div>
@@ -75,7 +76,7 @@ export default function Contact() {
                   htmlFor="name"
                   className="block text-sm font-mono text-dark-muted mb-2"
                 >
-                  NOME
+                  {t("contact.form.name")}
                 </label>
                 <input
                   type="text"
@@ -94,7 +95,7 @@ export default function Contact() {
                   htmlFor="email"
                   className="block text-sm font-mono text-dark-muted mb-2"
                 >
-                  EMAIL
+                  {t("contact.form.email")}
                 </label>
                 <input
                   type="email"
@@ -113,7 +114,7 @@ export default function Contact() {
                   htmlFor="message"
                   className="block text-sm font-mono text-dark-muted mb-2"
                 >
-                  MENSAGEM
+                  {t("contact.form.message")}
                 </label>
                 <textarea
                   id="message"
@@ -123,7 +124,7 @@ export default function Contact() {
                   required
                   rows={6}
                   className="w-full min-w-0 box-border px-4 py-3 rounded-lg bg-dark-bg border border-dark-border text-dark-text placeholder-dark-muted focus:outline-none focus:border-accent-info transition-all resize-none"
-                  placeholder="Sua mensagem..."
+                  placeholder={t("contact.form.messagePlaceholder")}
                 />
               </div>
 
@@ -134,11 +135,11 @@ export default function Contact() {
                 className="w-full px-6 py-4 rounded-lg bg-gradient-to-r from-accent-info to-accent-success text-dark-bg font-semibold flex items-center justify-center space-x-2 hover:shadow-lg transition-all"
               >
                 {submitted ? (
-                  <span>Enviado!</span>
+                  <span>{t("contact.form.sent")}</span>
                 ) : (
                   <>
                     <FaPaperPlane />
-                    <span>Enviar Mensagem</span>
+                    <span>{t("contact.form.send")}</span>
                   </>
                 )}
               </motion.button>
@@ -154,7 +155,7 @@ export default function Contact() {
           >
             <div className="metric-card rounded-xl p-6 md:p-8">
               <h3 className="text-2xl font-bold mb-6 text-dark-text">
-                Informações de Contato
+                {t("contact.info.title")}
               </h3>
               <div className="space-y-6">
                 <motion.a
@@ -219,16 +220,15 @@ export default function Contact() {
 
             <div className="p-6 rounded-lg bg-dark-card border border-dark-border">
               <h4 className="font-semibold mb-3 text-accent-success">
-                Disponibilidade
+                {t("contact.availability.title")}
               </h4>
               <p className="text-sm text-dark-muted mb-2">
-                Aberto para oportunidades Pleno/Sênior em desenvolvimento de
-                software, com foco em arquitetura e qualidade.
+                {t("contact.availability.text")}
               </p>
               <div className="flex items-center space-x-2 mt-4">
                 <div className="w-2 h-2 rounded-full bg-accent-success animate-pulse"></div>
                 <span className="text-xs font-mono text-dark-muted">
-                  DISPONÍVEL PARA PROJETOS
+                  {t("contact.availability.status")}
                 </span>
               </div>
             </div>
@@ -240,12 +240,12 @@ export default function Contact() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <p className="text-sm text-dark-muted font-mono mb-4 md:mb-0">
-              © 2024 Lucas Baggio. Todos os direitos reservados.
+              {t("footer.copyright")}
             </p>
             <div className="flex items-center space-x-2">
               <div className="w-2 h-2 rounded-full bg-accent-success animate-pulse"></div>
               <span className="text-xs font-mono text-dark-muted">
-                BUILT WITH NEXT.JS & TAILWIND CSS
+                {t("footer.built")}
               </span>
             </div>
           </div>

@@ -2,8 +2,10 @@
 
 import { motion } from "framer-motion";
 import { FaLayerGroup, FaShieldAlt, FaCogs, FaDatabase, FaLightbulb, FaRocket } from "react-icons/fa";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Architecture() {
+  const { t } = useLanguage();
   const colorClasses = {
     "accent-info": {
       bg: "bg-accent-info/20",
@@ -72,11 +74,10 @@ export default function Architecture() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-accent-info to-accent-success bg-clip-text text-transparent">
-            Arquitetura Limpa
+            {t("architecture.title")}
           </h2>
           <p className="text-dark-muted text-lg max-w-2xl mx-auto">
-            Separação rigorosa de responsabilidades garantindo testabilidade,
-            manutenibilidade e escalabilidade
+            {t("architecture.subtitle")}
           </p>
         </motion.div>
 
@@ -143,50 +144,43 @@ export default function Architecture() {
                   <FaLightbulb className="w-6 h-6 text-accent-info" />
                 </div>
                 <h3 className="text-xl sm:text-2xl font-bold text-dark-text">
-                  Por que Use Cases em vez de Services Gigantes?
+                  {t("architecture.why.title")}
                 </h3>
               </div>
               <p className="text-dark-muted mb-4 leading-relaxed text-sm sm:text-base">
-                A escolha por Use Cases ao invés de Services monolíticos não é
-                apenas uma questão de organização, mas uma decisão arquitetural
-                estratégica que impacta diretamente na manutenibilidade e
-                escalabilidade do sistema.
+                {t("architecture.why.description")}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
                 <div className="p-4 rounded-lg bg-dark-bg border border-dark-border">
                   <h4 className="font-semibold mb-2 text-accent-success text-sm">
-                    Responsabilidade Única
+                    {t("architecture.why.single")}
                   </h4>
                   <p className="text-xs text-dark-muted leading-relaxed">
-                    Cada Use Case tem uma responsabilidade clara e bem definida,
-                    facilitando testes unitários isolados e manutenção futura.
+                    {t("architecture.why.single.desc")}
                   </p>
                 </div>
                 <div className="p-4 rounded-lg bg-dark-bg border border-dark-border">
                   <h4 className="font-semibold mb-2 text-accent-success text-sm">
-                    Testabilidade
+                    {t("architecture.why.testability")}
                   </h4>
                   <p className="text-xs text-dark-muted leading-relaxed">
-                    Com Use Cases isolados, conseguimos 100% de cobertura no
-                    domínio e application, algo impossível com Services gigantes.
+                    {t("architecture.why.testability.desc")}
                   </p>
                 </div>
                 <div className="p-4 rounded-lg bg-dark-bg border border-dark-border">
                   <h4 className="font-semibold mb-2 text-accent-success text-sm">
-                    Evolução Independente
+                    {t("architecture.why.evolution")}
                   </h4>
                   <p className="text-xs text-dark-muted leading-relaxed">
-                    Mudanças em uma regra de negócio não afetam outras, permitindo
-                    evolução contínua sem acoplamento.
+                    {t("architecture.why.evolution.desc")}
                   </p>
                 </div>
                 <div className="p-4 rounded-lg bg-dark-bg border border-dark-border">
                   <h4 className="font-semibold mb-2 text-accent-success text-sm">
-                    Documentação Viva
+                    {t("architecture.why.documentation")}
                   </h4>
                   <p className="text-xs text-dark-muted leading-relaxed">
-                    O código se torna auto-documentado: cada Use Case representa
-                    uma funcionalidade específica do sistema.
+                    {t("architecture.why.documentation.desc")}
                   </p>
                 </div>
               </div>
@@ -197,7 +191,7 @@ export default function Architecture() {
                 whileHover={{ scale: 1.05 }}
                 className="inline-flex items-center justify-center sm:justify-start space-x-2 mt-6 px-4 py-2 rounded-lg bg-accent-info/10 border border-accent-info text-accent-info hover:bg-accent-info/20 transition-all text-sm font-mono w-full sm:w-auto"
               >
-                <span>Ver implementação no GitHub</span>
+                <span>{t("architecture.why.viewCode")}</span>
                 <span>→</span>
               </motion.a>
             </div>
@@ -220,46 +214,39 @@ export default function Architecture() {
                 </div>
                 <div>
                   <h3 className="text-xl sm:text-2xl font-bold text-dark-text">
-                    Java 21 & Virtual Threads
+                    {t("architecture.java.title")}
                   </h3>
                   <p className="text-sm text-dark-muted font-mono">
-                    Performance de próxima geração
+                    {t("architecture.java.subtitle")}
                   </p>
                 </div>
               </div>
               <p className="text-dark-muted mb-4 leading-relaxed text-sm sm:text-base">
-                O projeto utiliza <span className="text-accent-info font-semibold">Java 21</span> com
-                <span className="text-accent-success font-semibold"> Virtual Threads</span>, a
-                feature mais revolucionária do Java moderno. Virtual Threads permitem escalabilidade
-                massiva de I/O sem o overhead de threads tradicionais, suportando milhões de
-                requisições concorrentes com recursos mínimos.
+                {t("architecture.java.description")}
               </p>
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-6">
                 <div className="p-4 rounded-lg bg-dark-bg border border-dark-border">
                   <h4 className="font-semibold mb-2 text-accent-success text-sm">
-                    Throughput 10x
+                    {t("architecture.java.throughput")}
                   </h4>
                   <p className="text-xs text-dark-muted leading-relaxed">
-                    Virtual Threads eliminam o overhead de context switching,
-                    permitindo muito mais requisições simultâneas.
+                    {t("architecture.java.throughput.desc")}
                   </p>
                 </div>
                 <div className="p-4 rounded-lg bg-dark-bg border border-dark-border">
                   <h4 className="font-semibold mb-2 text-accent-success text-sm">
-                    Redução de Custos
+                    {t("architecture.java.costs")}
                   </h4>
                   <p className="text-xs text-dark-muted leading-relaxed">
-                    Menos recursos necessários = menor custo de infraestrutura,
-                    especialmente em ambientes cloud.
+                    {t("architecture.java.costs.desc")}
                   </p>
                 </div>
                 <div className="p-4 rounded-lg bg-dark-bg border border-dark-border sm:col-span-2 md:col-span-1">
                   <h4 className="font-semibold mb-2 text-accent-success text-sm">
-                    Código Simples
+                    {t("architecture.java.simple")}
                   </h4>
                   <p className="text-xs text-dark-muted leading-relaxed">
-                    Mesmo código síncrono, performance assíncrona. Sem necessidade
-                    de mudar para programação reativa.
+                    {t("architecture.java.simple.desc")}
                   </p>
                 </div>
               </div>
@@ -276,19 +263,16 @@ export default function Architecture() {
         >
           {[
             {
-              title: "Dependency Inversion",
-              description:
-                "Camadas externas dependem de abstrações definidas nas camadas internas",
+              title: t("architecture.principle.inversion"),
+              description: t("architecture.principle.inversion.desc"),
             },
             {
-              title: "Testabilidade",
-              description:
-                "100% de cobertura no domínio e application através de testes unitários isolados",
+              title: t("architecture.principle.testability"),
+              description: t("architecture.principle.testability.desc"),
             },
             {
-              title: "Escalabilidade",
-              description:
-                "Arquitetura preparada para crescimento horizontal e vertical",
+              title: t("architecture.principle.scalability"),
+              description: t("architecture.principle.scalability.desc"),
             },
           ].map((principle, index) => (
             <motion.div

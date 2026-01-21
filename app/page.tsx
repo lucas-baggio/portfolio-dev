@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import Architecture from "@/components/Architecture";
 import Metrics from "@/components/Metrics";
 import Experience from "@/components/Experience";
+import Recommendations from "@/components/Recommendations";
 import Contact from "@/components/Contact";
 import Navigation from "@/components/Navigation";
 
@@ -13,6 +14,7 @@ export default function Home() {
       <Architecture />
       <Metrics />
       <Experience />
+      <Recommendations />
       <Contact />
     </main>
   );

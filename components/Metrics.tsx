@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useState } from "react";
 import { FaChartLine, FaCheckCircle, FaClock, FaExclamationTriangle, FaInfoCircle } from "react-icons/fa";
 import { LineChart, Line, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from "recharts";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const latencyData = [
   { time: "00:00", p95: 120, p99: 180 },
@@ -33,6 +34,7 @@ const errorRateData = [
 ];
 
 export default function Metrics() {
+  const { t } = useLanguage();
   const colorClasses = {
     "accent-info": {
       bg: "bg-accent-info/20",
@@ -58,42 +60,42 @@ export default function Metrics() {
 
   const metrics = [
     {
-      label: "Cobertura de Testes",
+      label: t("metrics.coverage.label"),
       value: "86%",
       target: "100%",
       icon: FaCheckCircle,
       color: "accent-success",
-      description: "Domínio + Application",
+      description: t("metrics.coverage.desc"),
       details: [
-        { layer: "Domain", coverage: "100%" },
-        { layer: "Application", coverage: "100%" },
-        { layer: "Infrastructure", coverage: "75%" },
+        { layer: t("metrics.domain"), coverage: "100%" },
+        { layer: t("metrics.application"), coverage: "100%" },
+        { layer: t("metrics.infrastructure"), coverage: "75%" },
       ],
     },
     {
-      label: "Latência P95",
+      label: t("metrics.latency.label"),
       value: "118ms",
       target: "< 200ms",
       icon: FaClock,
       color: "accent-info",
-      description: "Percentil 95",
+      description: t("metrics.latency.desc"),
     },
     {
-      label: "Taxa de Erro",
+      label: t("metrics.error.label"),
       value: "0.10%",
       target: "< 0.5%",
       icon: FaExclamationTriangle,
       color: "accent-success",
-      description: "Erros 5xx",
+      description: t("metrics.error.desc"),
     },
     {
-      label: "RPS Médio",
+      label: t("metrics.rps.label"),
       value: "1,650",
       target: "> 1,000",
       icon: FaChartLine,
       color: "accent-info",
-      description: "Requests por segundo",
-      tooltip: "Métricas obtidas via teste de carga com k6 simulando pico de acessos",
+      description: t("metrics.rps.desc"),
+      tooltip: t("metrics.rps.tooltip"),
     },
   ];
 
@@ -111,11 +113,10 @@ export default function Metrics() {
           className="text-center mb-20"
         >
           <h2 className="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-accent-info to-accent-success bg-clip-text text-transparent">
-            Observabilidade & Qualidade
+            {t("metrics.title")}
           </h2>
           <p className="text-dark-muted text-lg max-w-2xl mx-auto">
-            Métricas em tempo real seguindo o método RED (Rate, Errors,
-            Duration) e cobertura de testes garantida
+            {t("metrics.subtitle")}
           </p>
         </motion.div>
 
@@ -139,7 +140,7 @@ export default function Metrics() {
                     <Icon className={`w-6 h-6 ${colorClasses[metric.color as keyof typeof colorClasses].text}`} />
                   </div>
                   <span className="text-xs font-mono text-dark-muted">
-                    LIVE
+                    {t("metrics.live")}
                   </span>
                 </div>
                 <h3 className="text-sm text-dark-muted mb-1 font-mono">
@@ -163,7 +164,7 @@ export default function Metrics() {
                 )}
                 <div className="flex items-center justify-between">
                   <span className="text-xs font-mono text-dark-muted">
-                    Target: {metric.target}
+                    {t("metrics.target")}: {metric.target}
                   </span>
                   <div className="flex items-center space-x-1">
                     <div className="w-2 h-2 rounded-full bg-accent-success animate-pulse"></div>

@@ -2,9 +2,12 @@
 
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LanguageSelector from "./LanguageSelector";
 
 export default function Navigation() {
   const [scrolled, setScrolled] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -15,11 +18,12 @@ export default function Navigation() {
   }, []);
 
   const navItems = [
-    { label: "Início", href: "#hero" },
-    { label: "Arquitetura", href: "#architecture" },
-    { label: "Métricas", href: "#metrics" },
-    { label: "Experiência", href: "#experience" },
-    { label: "Contato", href: "#contact" },
+    { key: "nav.home", href: "#hero" },
+    { key: "nav.architecture", href: "#architecture" },
+    { key: "nav.metrics", href: "#metrics" },
+    { key: "nav.experience", href: "#experience" },
+    { key: "nav.recommendations", href: "#recommendations" },
+    { key: "nav.contact", href: "#contact" },
   ];
 
   return (
@@ -55,7 +59,7 @@ export default function Navigation() {
                 whileHover={{ scale: 1.1 }}
                 className="text-sm text-dark-muted hover:text-accent-info transition-colors font-mono"
               >
-                {item.label}
+                {t(item.key)}
               </motion.a>
             ))}
           </div>
@@ -65,6 +69,7 @@ export default function Navigation() {
             animate={{ opacity: 1 }}
             className="flex items-center space-x-4"
           >
+            <LanguageSelector />
             <div className="hidden md:flex items-center space-x-2 text-xs text-dark-muted font-mono">
               <div className="w-2 h-2 rounded-full bg-accent-success"></div>
               <span>ONLINE</span>

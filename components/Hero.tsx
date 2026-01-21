@@ -3,8 +3,11 @@
 import { motion } from "framer-motion";
 import { FaGithub, FaLinkedin, FaCode } from "react-icons/fa";
 import { HiArrowDown } from "react-icons/hi";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+  
   return (
     <section
       id="hero"
@@ -35,7 +38,7 @@ export default function Hero() {
             <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-dark-card border border-dark-border mb-8">
               <div className="w-2 h-2 rounded-full bg-accent-success animate-pulse"></div>
               <span className="text-xs font-mono text-dark-muted">
-                ENGENHEIRO DE SOFTWARE FULL STACK
+                {t("hero.badge")}
               </span>
             </div>
           </motion.div>
@@ -55,13 +58,13 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="text-xl md:text-2xl text-dark-muted mb-4 font-light max-w-3xl mx-auto"
           >
-            Construindo sistemas de alta escalabilidade com{" "}
+            {t("hero.subtitle")}{" "}
             <span className="text-accent-info font-semibold">
-              arquitetura enterprise-ready
+              {t("hero.subtitle.enterprise")}
             </span>{" "}
-            e mentalidade de{" "}
+            {t("hero.subtitle.and")}{" "}
             <span className="text-accent-success font-semibold">
-              Site Reliability Engineering
+              {t("hero.subtitle.sre")}
             </span>
           </motion.p>
 
@@ -71,8 +74,7 @@ export default function Hero() {
             transition={{ duration: 0.6, delay: 0.6 }}
             className="text-sm md:text-base text-dark-muted mb-12 font-mono max-w-2xl mx-auto"
           >
-            Especialista em Java/Spring Boot & PHP/Laravel • Clean Architecture
-            • TDD/BDD • Observabilidade
+            {t("hero.skills")}
           </motion.p>
 
           <motion.div
@@ -110,7 +112,7 @@ export default function Hero() {
               className="px-6 py-4 rounded-lg bg-gradient-to-r from-accent-info to-accent-success text-dark-bg font-semibold hover:shadow-lg transition-all flex items-center space-x-2"
             >
               <FaCode />
-              <span>Ver Código no GitHub</span>
+              <span>{t("hero.viewCode")}</span>
             </motion.a>
           </motion.div>
 
@@ -121,7 +123,7 @@ export default function Hero() {
             className="flex flex-col items-center"
           >
             <span className="text-xs text-dark-muted font-mono mb-2">
-              SCROLL PARA EXPLORAR
+              {t("hero.scroll")}
             </span>
             <motion.div
               animate={{ y: [0, 10, 0] }}
