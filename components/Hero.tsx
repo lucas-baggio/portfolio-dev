@@ -27,8 +27,8 @@ export default function Hero() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-info/20 rounded-full blur-3xl animate-pulse-slow"></div>
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-success/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
-        <div className="text-center">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+        <div className="text-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-5xl md:text-7xl font-bold mb-6 bg-gradient-to-r from-accent-info via-accent-success to-accent-info bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-accent-info via-accent-success to-accent-info bg-clip-text text-transparent px-4 sm:px-2 break-words overflow-wrap-anywhere leading-tight"
           >
             Lucas Baggio
           </motion.h1>
