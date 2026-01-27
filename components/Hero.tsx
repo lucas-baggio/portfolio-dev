@@ -11,7 +11,8 @@ export default function Hero() {
   return (
     <section
       id="hero"
-      className="min-h-screen flex items-center justify-center relative overflow-hidden pt-20"
+      className="min-h-screen flex items-center justify-center relative pt-20"
+      style={{ overflowX: "clip" }}
     >
       <div className="absolute inset-0 opacity-10">
         <div
@@ -24,10 +25,10 @@ export default function Hero() {
         ></div>
       </div>
 
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent-info/20 rounded-full blur-3xl animate-pulse-slow"></div>
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent-success/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
+      <div className="absolute top-1/4 left-1/4 w-64 h-64 md:w-96 md:h-96 bg-accent-info/20 rounded-full blur-3xl animate-pulse-slow"></div>
+      <div className="absolute bottom-1/4 right-1/4 w-64 h-64 md:w-96 md:h-96 bg-accent-success/20 rounded-full blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
+      <div className="w-full mx-auto px-0 sm:px-2 md:px-4 lg:px-6 xl:px-8 relative z-10">
         <div className="text-center w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -35,7 +36,7 @@ export default function Hero() {
             transition={{ duration: 0.6 }}
             className="mb-6"
           >
-            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-dark-card border border-dark-border mb-8">
+            <div className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-dark-card border border-dark-border mb-4">
               <div className="w-2 h-2 rounded-full bg-accent-success animate-pulse"></div>
               <span className="text-xs font-mono text-dark-muted">
                 {t("hero.badge")}
@@ -43,20 +44,26 @@ export default function Hero() {
             </div>
           </motion.div>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-accent-info via-accent-success to-accent-info bg-clip-text text-transparent px-4 sm:px-2 break-words overflow-wrap-anywhere leading-tight"
-          >
-            Lucas Baggio
-          </motion.h1>
+          <div className="w-full overflow-visible" style={{ paddingLeft: "1rem", paddingRight: "1rem" }}>
+            <motion.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="text-5xl sm:text-5xl md:text-4xl lg:text-5xl xl:text-9xl font-bold mb-12 leading-tight text-accent-info"
+              style={{
+                display: "inline-block",
+                margin: "0 auto",
+              }}
+            >
+              Lucas Baggio
+            </motion.h1>
+          </div>
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl text-dark-muted mb-4 font-light max-w-3xl mx-auto"
+            className="text-xl md:text-2xl text-dark-muted mb-4 mt-8 font-light max-w-3xl mx-auto px-4 sm:px-0"
           >
             {t("hero.subtitle")}{" "}
             <span className="text-accent-info font-semibold">
